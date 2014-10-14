@@ -109,5 +109,5 @@ class ArrayTest < MiniTest::Test
     ar << 93
     assert_equal(21, ar.min)
   end
-        
+
 end

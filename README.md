@@ -14,10 +14,6 @@ Uses an internal array and provides the following methods
 - max
 - min
 
-*TODO*
-
-- no duplicates option
-
 ## Sorted Array
 
 A subclass of Array but it remains sorted with all operations
