@@ -18,11 +18,12 @@ Uses an internal array and provides the following methods
 
 A subclass of Array but it remains sorted with all operations
 
+## Stack
+
+## Queue
 
 #TODO
 
-- Stack
-- Queue
 - Priority Queue
 - LinkedList
 - Double LinkedList
