@@ -22,10 +22,10 @@ A subclass of Array but it remains sorted with all operations
 
 ## Queue
 
+## LinkedList
+
 #TODO
 
-- Priority Queue
-- LinkedList
 - Double LinkedList
 - Sorted List
 - Iterator
