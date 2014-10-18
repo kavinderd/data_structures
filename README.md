@@ -40,3 +40,18 @@ A subclass of Array but it remains sorted with all operations
 - Graph
 - Weighted Graphs
 
+# Algorithms
+
+## Bubble Sort
+
+## Insertion Sort
+
+## Selection Sort
+
+## Odd-Even Sort
+
+##Todo
+
+- MergeSort
+- Shellsort
+- QuickSort
