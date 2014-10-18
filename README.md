@@ -24,9 +24,10 @@ A subclass of Array but it remains sorted with all operations
 
 ## LinkedList
 
+## Double Ended List
+
 #TODO
 
-- Double Ended List
 - Doubly LinkedList
 - Sorted List
 - Iterator
