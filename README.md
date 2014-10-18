@@ -26,7 +26,8 @@ A subclass of Array but it remains sorted with all operations
 
 #TODO
 
-- Double LinkedList
+- Double Ended List
+- Doubly LinkedList
 - Sorted List
 - Iterator
 - Binary Trees
