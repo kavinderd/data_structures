@@ -26,10 +26,11 @@ A subclass of Array but it remains sorted with all operations
 
 ## Double Ended List
 
+## Sorted List
+
 #TODO
 
 - Doubly LinkedList
-- Sorted List
 - Iterator
 - Binary Trees
 - Red-Black Trees
