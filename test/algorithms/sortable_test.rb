@@ -38,5 +38,16 @@ class SortableTest < MiniTest::Test
     ar =Algorithms::Sortable.shellsort(ar)
     assert_equal([1,3,5,6,21,53], ar)
   end
-  
+
+  def test_partition
+    ar = [149, 192, 47,152, 159, 195, 61, 66, 17, 167, 118, 64, 27, 80, 30, 105]
+    ar = Algorithms::Sortable.partition(ar, 0, ar.size-1, 99)
+    assert_equal(8, ar)
+  end
+
+  def test_quicksort
+    ar = [1,3,53,5,21,6]
+    ar =Algorithms::Sortable.shellsort(ar)
+    assert_equal([1,3,5,6,21,53], ar)
+  end
 end

@@ -183,6 +183,56 @@ module Algorithms
       end
       result
     end
-    
+
+    ##
+    # Partitioning is an algorithm applied to array to not sort it but to group values around a pivot.
+    # The end result of partitioning is that the array will have all values less than the pivot on 
+    # the left and all values greater than the pivot on the right.
+    #
+    # Partitioning runs in O(n) time as the array is run through only N number of times.
+    # After one pass through all N the array will be partitioned around the pivot value.
+    def partition(array, left, right, pivot)
+      leftPtr = left - 1
+      rightPtr = right + 1
+      while(true)
+        loop do
+          leftPtr += 1
+          break unless leftPtr < right && array[leftPtr]< pivot
+        end
+        loop do
+          rightPtr -= 1
+          break unless rightPtr > left && array[rightPtr] > pivot
+        end
+        if leftPtr >= rightPtr
+          break;
+        else
+          array[leftPtr], array[rightPtr] = array[rightPtr], array[leftPtr]
+        end
+      end
+      leftPtr
+    end
+
+    ##
+    # The quicksort is similar to how a mergesort works.  For an array of N elements, quicksort
+    # first paritions the array around a pivot value. This paritioning ensures that the left partition contains
+    # all values less than the pivot and that the righ array contains all values greatet than the parition. An added
+    # benefit of paritioning is that the index of the pivot is already sorted if it takes its place between the left and righ array.
+    #
+    # The complexity of quicksort is O(NlogN) just like mergesort. This is because the partitioning phase runs in O(n) time, and with every recursive
+    # call of quicksort the resulting arrays that are partitioned can/should be half the size in a balanced scenario.  Thus, for an array of size 8,
+    # we would have a partition for size 8, then 4, then 2 or 8(log8) = 8*3 = 24.
+    # When quicksort is not balanced and the partitions continually result in array sizes of n-1 and 1 then quicksort may end up running in O(n^2) time.
+    def quicksort(array, left, right)
+      if(righ-left <= 0)
+        array
+      else
+        pivot = array.delete_at(pivot)
+        partition = partition(array, left, right, pivot)
+        l_arr = quicksort(array,left, parition-1)
+        r_arr = quicksort(array,parition, right)
+        l_arr + pivot + right
+      end
+    end
+     
   end
 end
