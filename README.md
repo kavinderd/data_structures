@@ -50,8 +50,9 @@ A subclass of Array but it remains sorted with all operations
 
 ## Odd-Even Sort
 
+## Mergesort
+
 ##Todo
 
-- MergeSort
 - Shellsort
 - QuickSort
