@@ -26,5 +26,11 @@ class SortableTest < MiniTest::Test
     ar =Algorithms::Sortable.odd_even_sort(ar)
     assert_equal([1,3,5,6,21,53], ar)
   end
+
+  def test_mergesort
+    ar = [1,3,53,5,21,6]
+    ar =Algorithms::Sortable.mergesort(ar)
+    assert_equal([1,3,5,6,21,53], ar)
+  end
   
 end
