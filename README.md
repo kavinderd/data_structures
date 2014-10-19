@@ -54,6 +54,9 @@ A subclass of Array but it remains sorted with all operations
 
 ## Shellsort
 
+## Quicksort
+
 ##Todo
 
-- QuickSort
+- Radix Sort
+
