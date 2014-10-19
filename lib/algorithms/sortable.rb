@@ -141,6 +141,48 @@ module Algorithms
       end
       result
     end
+
+    ##
+    # The shellsort is a large improvement on insertion sort. Shell sort works by first sorting 
+    # elements that are h intervals apart. For instance in a 10 element array first 
+    # 0,4,8 are sorted then 1, 5, 9, then 2,6 then 3,7. By sorting distant intervals first
+    # the overall sorting that needs to be done after one pass is reduced.  h is calculated by
+    # max(h = h*3 + 1) < array.size/3
+    # after elements at h interval are sorted, shellsort then sorts elements at h = h-1/3 and so on until
+    # h == 1.  Compared to insertion sort, shell sort is much more efficient, because it solves the problem that insertion
+    # sort has when smaller values are on the opposite end.  For instance if the smallest value in an array
+    # is the last element, then it will be moved n times through the array on the last sort of an insertion sort.
+    # Whereas in shellsort it will be moved at the h intervals.  In the instance of a n=1000, this last
+    # element n[1000] will be moved 364 every time, and then 121, 40, 13, and so on.  This greatly reduces the
+    # number of swaps that are made overall.
+    #
+    # The complexity of shellsort has still not been theoretically calculated, however based on our H interval it 
+    # has been shown to be O(n^3/2) demonstrably better than a quadratic function.
+    def shellsort(array)
+      result = array.dup
+      h = 1
+      while(h <= result.size/3)
+        h = h*3 + 1
+      end
+      outer = 0
+      inner = 0
+      size = result.size
+      while(h>0)
+        outer = h
+        while(outer < size)
+          tmp = result[outer]
+          inner = outer
+          while(inner > h-1 && result[inner-h] >= tmp)
+            result[inner] = result[inner-h]
+            inner -= h
+          end
+          result[inner] = tmp
+          outer += 1
+        end
+        h = (h-1)/3
+      end
+      result
+    end
     
   end
 end
