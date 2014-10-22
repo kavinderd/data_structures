@@ -26,4 +26,61 @@ class TreeTest < MiniTest::Test
     assert_equal('hello', t.root.value)
   end
 
+  def test_finding
+    t = DataStructures::Tree.new
+    t.insert(10, 'hello')
+    t.insert(32, 'farewell')
+    t.insert(1, 'good day')
+    t.insert(16, 'adios')
+    assert_equal('good day', t.find(1).value)
+  end
+
+  def test_deletion_node_without_children
+    t = DataStructures::Tree.new
+    t.insert(10, 'hello')
+    t.insert(32, 'farewell')
+    t.insert(1, 'good day')
+    t.insert(16, 'adios')
+    t.delete(32)
+    assert_equal(nil, t.find(32))
+  end
+
+  def test_deletion_node_with_right_child
+    t = DataStructures::Tree.new
+    t.insert(10, 'hello')
+    t.insert(32, 'farewell')
+    t.insert(1, 'good day')
+    t.insert(16, 'adios')
+    t.insert(35, 'hi')
+    t.delete(32)
+    assert_equal(nil, t.find(32))
+    assert_equal('hi', t.find(35).value)
+  end
+
+  def test_deletion_node_with_left_child
+    t = DataStructures::Tree.new
+    t.insert(10, 'hello')
+    t.insert(32, 'farewell')
+    t.insert(1, 'good day')
+    t.insert(16, 'adios')
+    t.insert(31, 'hi')
+    t.delete(32)
+    assert_equal(nil, t.find(32))
+    assert_equal('hi', t.find(31).value)
+  end
+
+  def test_deletion_node_with_left_child
+    t = DataStructures::Tree.new
+    t.insert(10, 'hello')
+    t.insert(32, 'farewell')
+    t.insert(1, 'good day')
+    t.insert(16, 'adios')
+    t.insert(31, 'hi')
+    t.insert(33, 'sup')
+    t.delete(32)
+    assert_equal(nil, t.find(32))
+    assert_equal('hi', t.find(31).value)
+    assert_equal('sup', t.find(33).value)
+  end
+
 end

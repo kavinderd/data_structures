@@ -17,6 +17,19 @@ module DataStructures
       @root = nil
     end
 
+    def find(key)
+      current = @root
+      while current.key != key
+        if key < current.key
+          current = current.left_child
+        else
+          current = current.right_child
+        end
+        break unless current
+      end
+      current
+    end
+
     def insert(key, value)
       node = Node.new(key, value)
       if @root
@@ -27,12 +40,12 @@ module DataStructures
           if key < current.key
             current = current.left_child
             unless current
-              parent.left_child = newNode
+              parent.left_child = node
               break
             end
           else
             current = current.right_child
-            unless currnet
+            unless current
               parent.right_child = node
               break
             end
@@ -42,5 +55,77 @@ module DataStructures
         @root = node
       end
     end
+
+    def delete(key)
+      return nil unless @root
+      current = @root
+      parent = @root
+      is_left =true
+      while current.key != key
+        parent = current
+        if key < current.left_child.key
+          is_left = true
+          current = current.left_child
+        else
+          is_left = false
+          current = current.right_child
+        end
+        break unless current
+      end
+      if !current.left_child && !current.right_child
+        if current == @root
+          root = nil
+        elsif is_left
+          parent.left_child = nil
+        else
+          parent.right_child = nil
+        end
+      elsif !current.right_child
+        if current == @root
+          root = current.left_child
+        elsif is_left
+          parent.left_child = current.left_child
+        else
+          parent.right_child  = current.left_child
+        end
+      elsif !current.left_child
+        if current == @root
+          root = current.right_child
+        elsif is_left
+          parent.left_child = current.right_child
+        else
+          parent.right_child = current.right_child
+        end
+      else
+        successor = get_successor(current)
+        if current == @root
+          @root = successor
+        elsif is_left
+          parent.left_child = successor
+        else
+          parent.right_child = successor
+        end
+        successor.left_child = current.left_child
+      end
+    end
+
+    private
+
+    def get_successor(node)
+      successor_parent = node
+      successor = node
+      current = node.right_child
+      while current
+        successor_parent = successor
+        successor = current
+        current = current.left_child
+      end
+      if successor != node.right_child
+        successor_parent.left_child = successor.right_child
+        successor.right_child = node.right_child
+      end
+      successor
+    end
+
   end
 end
