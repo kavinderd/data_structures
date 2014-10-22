@@ -30,9 +30,10 @@ A subclass of Array but it remains sorted with all operations
 
 ## Doubly LinkedList
 
+## Binary Search Tree
+
 #TODO
 
-- Binary Trees
 - Red-Black Trees
 - 2-3-4 Trees
 - Hash Tables
