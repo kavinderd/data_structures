@@ -73,43 +73,51 @@ module DataStructures
         break unless current
       end
       if !current.left_child && !current.right_child
-        if current == @root
-          root = nil
-        elsif is_left
-          parent.left_child = nil
-        else
-          parent.right_child = nil
-        end
+        delete_node_without_children(current, parent, is_left)
       elsif !current.right_child
-        if current == @root
-          root = current.left_child
-        elsif is_left
-          parent.left_child = current.left_child
-        else
-          parent.right_child  = current.left_child
-        end
+        delete_node_with_left_child(current, parent, is_left)
       elsif !current.left_child
-        if current == @root
-          root = current.right_child
-        elsif is_left
-          parent.left_child = current.right_child
-        else
-          parent.right_child = current.right_child
-        end
+        delete_node_with_right_child(current, parent, is_left)
       else
-        successor = get_successor(current)
-        if current == @root
-          @root = successor
-        elsif is_left
-          parent.left_child = successor
-        else
-          parent.right_child = successor
-        end
-        successor.left_child = current.left_child
+        delete_node_with_two_children(current, parent, is_left)
       end
     end
 
+    def traverse(type)
+      result = []
+      case type
+      when :preorder
+        preorder(@root, result)
+      when :inorder
+        inorder(@root, result)
+      when :postorder
+        postorder(@root, result)
+      end
+      result
+    end
+
     private
+
+    def preorder(node, result)
+      return unless node
+      result << node.value
+      preorder(node.left_child, result)
+      preorder(node.right_child, result)
+    end
+
+    def inorder(node, result)
+      return unless node
+      inorder(node.left_child, result)
+      result << node.value
+      inorder(node.right_child, result)
+    end
+
+    def postorder(node, result)
+      return unless node
+      postorder(node.left_child, result)
+      postorder(node.right_child,result)
+      result << node.value
+    end 
 
     def get_successor(node)
       successor_parent = node
@@ -125,6 +133,48 @@ module DataStructures
         successor.right_child = node.right_child
       end
       successor
+    end
+
+    def delete_node_without_children(current, parent, is_left)
+      if current == @root
+        root = nil
+      elsif is_left
+        parent.left_child = nil
+      else
+        parent.right_child = nil
+      end
+    end
+
+    def delete_node_with_left_child(current, parent, is_left)
+      if current == @root
+        root = current.left_child
+      elsif is_left
+        parent.left_child = current.left_child
+      else
+        parent.right_child  = current.left_child
+      end
+    end
+
+    def delete_node_with_right_child(current, parent, is_left)
+      if current == @root
+        root = current.right_child
+      elsif is_left
+        parent.left_child = current.right_child
+      else
+        parent.right_child = current.right_child
+      end
+    end
+
+    def delete_node_with_two_children(current, parent, is_left)
+      successor = get_successor(current)
+      if current == @root
+        @root = successor
+      elsif is_left
+        parent.left_child = successor
+      else
+        parent.right_child = successor
+      end
+      successor.left_child = current.left_child
     end
 
   end

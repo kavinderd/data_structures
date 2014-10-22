@@ -83,4 +83,37 @@ class TreeTest < MiniTest::Test
     assert_equal('sup', t.find(33).value)
   end
 
+  def test_preorder_traversal
+    t = DataStructures::Tree.new
+    t.insert(10, '*')
+    t.insert(5, 'A')
+    t.insert(12, '+')
+    t.insert(11, 'B')
+    t.insert(13, 'C')
+    preorder = t.traverse(:preorder)
+    assert_equal(%w{ * A + B C }, preorder)
+  end
+
+  def test_inorder_traversal
+    t = DataStructures::Tree.new
+    t.insert(10, '*')
+    t.insert(5, 'A')
+    t.insert(12, '+')
+    t.insert(11, 'B')
+    t.insert(13, 'C')
+    inorder = t.traverse(:inorder)
+    assert_equal(%w{ A * B + C} , inorder)
+  end
+
+  def test_postorder_traversal
+    t = DataStructures::Tree.new
+    t.insert(10, '*')
+    t.insert(5, 'A')
+    t.insert(12, '+')
+    t.insert(11, 'B')
+    t.insert(13, 'C')
+    postorder = t.traverse(:postorder)
+    assert_equal(%w{ A B C + * }, postorder)
+  end
+
 end
