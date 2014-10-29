@@ -32,9 +32,10 @@ A subclass of Array but it remains sorted with all operations
 
 ## Binary Search Tree
 
+## Red Black Tree
+
 #TODO
 
-- Red-Black Trees
 - 2-3-4 Trees
 - Hash Tables
 - Heap
