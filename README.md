@@ -34,9 +34,10 @@ A subclass of Array but it remains sorted with all operations
 
 ## Red Black Tree
 
+## 2-3-4 Trees
+
 #TODO
 
-- 2-3-4 Trees
 - Hash Tables
 - Heap
 - Graph
