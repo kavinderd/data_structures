@@ -36,9 +36,10 @@ A subclass of Array but it remains sorted with all operations
 
 ## 2-3-4 Trees
 
+## Hash Tables
+
 #TODO
 
-- Hash Tables
 - Heap
 - Graph
 - Weighted Graphs
