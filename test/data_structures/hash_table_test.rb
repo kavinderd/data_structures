@@ -7,7 +7,7 @@ class HashTableTest < MiniTest::Test
     @type = DataStructures::HashTable::HASH_TYPES.sample
   end
   def test_hashing_an_inserted_item
-    h = DataStructures::HashTable.new(100, @type)
+    h = DataStructures::HashTable.new(100, :separate_chaining)
     h.insert(453)
     assert_equal(453, h.find(453).value)
   end
