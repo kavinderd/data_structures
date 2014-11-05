@@ -61,6 +61,8 @@ A subclass of Array but it remains sorted with all operations
 
 ## Quicksort
 
+## Heapsort
+
 ##Todo
 
 - Radix Sort
