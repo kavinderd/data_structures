@@ -238,7 +238,10 @@ module Algorithms
     end
 
     ##
-    # The
+    # The heapsort works in a way uniquely different from  the other sorting algorithms.  It relies on the sorted nature of a heap
+    # to take an unsorted array transform it into a heap and then remove the largest items from the heap and append them to the end
+    # of the array.  Although it involves two loop structures, the heapsort runs in NlogN. Transforming an unsorted array to a heap
+    # only requires logN steps and the second loop to remove and then insert each node requires N steps.
     def heapsort(array)
       start = (array.size/2) - 1
       start.downto(0) do |i|
