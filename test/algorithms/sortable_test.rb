@@ -33,7 +33,7 @@ class SortableTest < MiniTest::Test
     assert_equal([1,3,5,6,21,53], ar)
   end
 
-  def test_mergesort
+  def test_shellsort
     ar = [1,3,53,5,21,6]
     ar =Algorithms::Sortable.shellsort(ar)
     assert_equal([1,3,5,6,21,53], ar)
@@ -47,7 +47,13 @@ class SortableTest < MiniTest::Test
 
   def test_quicksort
     ar = [1,3,53,5,21,6]
-    ar =Algorithms::Sortable.shellsort(ar)
+    ar =Algorithms::Sortable.quicksort(ar, 0, ar.size - 1)
+    assert_equal([1,3,5,6,21,53], ar)
+  end
+
+  def test_heapsort
+    ar = [1,3,53,5,21,6]
+    ar =Algorithms::Sortable.heapsort(ar)
     assert_equal([1,3,5,6,21,53], ar)
   end
 end

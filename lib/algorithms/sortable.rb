@@ -1,3 +1,5 @@
+require 'pry'
+require 'pry-debugger'
 module Algorithms
   module Sortable
 
@@ -223,15 +225,50 @@ module Algorithms
     # we would have a partition for size 8, then 4, then 2 or 8(log8) = 8*3 = 24.
     # When quicksort is not balanced and the partitions continually result in array sizes of n-1 and 1 then quicksort may end up running in O(n^2) time.
     def quicksort(array, left, right)
-      if(righ-left <= 0)
+      if right - left <= 0
         array
       else
-        pivot = array.delete_at(pivot)
+        pivot_index = (left + ((right - left)/2)).to_i 
+        pivot = array[pivot_index]
         partition = partition(array, left, right, pivot)
-        l_arr = quicksort(array,left, parition-1)
-        r_arr = quicksort(array,parition, right)
-        l_arr + pivot + right
+        quicksort(array, left, partition - 1)
+        quicksort(array, pivot, right)
+        array
       end
+    end
+
+    ##
+    # The
+    def heapsort(array)
+      start = (array.size/2) - 1
+      start.downto(0) do |i|
+        array = heapify(array, i, array.size)   
+      end
+      (array.size).downto(0) do |i|
+        node= array.shift
+        array[i] = node
+      end
+      array
+    end
+
+    def heapify(array, index, size)
+      top = array[index]
+      while index < size/2
+        left_child = 2 * index + 1
+        right_child = left_child + 1
+        if right_child < size && array[left_child] < array[right_child]
+          larger_child = right_child
+        else
+          larger_child = left_child
+        end
+
+        break if top >= array[larger_child]
+
+        array[index] = array[larger_child]
+        index = larger_child
+      end
+      array[index] = top
+      array
     end
      
   end
