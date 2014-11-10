@@ -40,9 +40,10 @@ A subclass of Array but it remains sorted with all operations
 
 ## Heap
 
+## Graph
+
 #TODO
 
-- Graph
 - Weighted Graphs
 
 # Algorithms
