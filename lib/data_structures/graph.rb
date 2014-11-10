@@ -38,6 +38,25 @@ module DataStructures
       @vertices[index].value
     end
 
+    def breadth_first_search
+      @queue = []
+      @vertices[0].visited = true
+      result  = [@vertices[0].value]
+      @queue << 0
+      while @queue.any?
+        index = @queue.shift
+        while index2 = adj_unvisited_vertex(index)
+          @vertices[index2].visited = true
+          result << @vertices[index2].value
+          @queue << index2
+        end
+      end
+      0.upto(count-1) do |i|
+        @vertices[i].visited = false
+      end
+      result.join
+    end
+
     def depth_first_search
       @vertices[0].visited = true
       result = [@vertices[0].value]
