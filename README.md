@@ -42,9 +42,7 @@ A subclass of Array but it remains sorted with all operations
 
 ## Graph
 
-#TODO
-
-- Weighted Graphs
+## Weighted Graphs
 
 # Algorithms
 
